@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Prep School｜子どものためのAIプレップスクール</title>
+  <meta name="description" content="4歳〜中学生対象。考える力・つくる力・伝える力を育てる、子どものためのAIプレップスクール。2026年9月開校予定。先行体験会受付中。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Noto+Serif+JP:wght@100;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+
+/* ═══════ RESET ═══════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  color: #111a14;
+  background: #fff;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+* { min-width: 0; }
+[id] { scroll-margin-top: 64px; }
+
+/* ═══════ TOKENS ═══════ */
+:root {
+  --g:       #1b7844;
+  --g2:      #239656;
+  --g-pale:  #f0faf4;
+  --g-light: #dff0e6;
+  --amber:   #e89c12;
+  --ink:     #111a14;
+  --ink2:    #2e3b32;
+  --ink3:    #637060;
+  --ink4:    #a8b4ab;
+  --rule:    #e2e8e4;
+  --warm:    #f8faf8;
+  --r:       14px;   /* border-radius base */
+
+  --c-kids: #f5c518;
+  --c-jun:  #34c984;
+  --c-std:  #4da6ff;
+  --c-adv:  #ff7043;
+}
+
+/* ═══════ ANIMATION ═══════ */
+.rz {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .7s cubic-bezier(.22,.61,.36,1),
+              transform .7s cubic-bezier(.22,.61,.36,1);
+}
+.rz.in { opacity: 1; transform: none; }
+.rz.d1 { transition-delay: .08s }
+.rz.d2 { transition-delay: .18s }
+.rz.d3 { transition-delay: .28s }
+.rz.d4 { transition-delay: .42s }
+
+/* ═══════ HEADER ═══════ */
+.hd {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  height: 64px;
+  display: flex; align-items: center; padding: 0 48px;
+  background: rgba(255,255,255,.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--rule);
+  transition: box-shadow .3s;
+}
+.hd.s { box-shadow: 0 2px 24px rgba(0,0,0,.06); }
+.hd-logo {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 16px; font-weight: 700;
+  color: var(--ink); letter-spacing: .03em;
+  margin-right: auto;
+  display: flex; align-items: center; gap: 0;
+}
+/* 左端の細いグリーンバー */
+.hd-logo::before {
+  content: '';
+  display: inline-block;
+  width: 3px; height: 18px;
+  background: var(--g);
+  border-radius: 2px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+.hd-nav { display: flex; align-items: center; gap: 32px; }
+.hd-nav a { font-size: 13px; font-weight: 400; color: var(--ink3); transition: color .2s; white-space: nowrap; }
+.hd-nav a:hover { color: var(--ink); }
+/* CTA：テキストリンク＋矢印スタイル */
+.hd-cta {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 500;
+  color: var(--g) !important;
+  padding-left: 24px;
+  border-left: 1px solid var(--rule);
+  white-space: nowrap; flex-shrink: 0;
+  transition: gap .2s, color .2s;
+}
+.hd-cta::after {
+  content: '→';
+  font-size: 12px;
+  transition: transform .2s;
+}
+.hd-cta:hover { gap: 10px; color: var(--g2) !important; }
+.hd-cta:hover::after { transform: translateX(2px); }
+@media (max-width: 860px) {
+  .hd { padding: 0 24px; }
+  .hd-nav a:not(.hd-cta) { display: none; }
+  .hd-cta { padding-left: 16px; font-size: 12px; }
+}
+
+/* ═══════ HERO ═══════ */
+.hero {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: 48% 52%;
+  min-height: calc(100vh - 60px);
+  max-height: 900px;
+  overflow-x: hidden;
+  position: relative;
+}
+.hero-l {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 56px 80px 48px;
+  background:
+    radial-gradient(ellipse 130% 80% at -15% 115%, rgba(27,120,68,.07) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 110% -5%, rgba(245,197,24,.05) 0%, transparent 55%),
+    #fff;
+  border-right: 1px solid var(--rule);
+  position: relative;
+}
+.hero-marker {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 32px;
+}
+.hero-marker-line { width: 32px; height: 1px; background: var(--ink4); flex-shrink: 0; }
+.hero-marker-text {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--ink4);
+}
+.hero-h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 900;
+  font-size: clamp(46px, 6.5vw, 88px);
+  line-height: 1.15;
+  letter-spacing: .01em;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+.hero-h1 em {
+  font-style: normal;
+  color: var(--g);
+  text-decoration: underline;
+  text-decoration-color: var(--amber);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}
+.hero-sub {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--ink3);
+  line-height: 2.1;
+  max-width: 380px;
+  margin-bottom: 44px;
+}
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+.btn-solid {
+  background: var(--g); color: #fff;
+  font-size: 14px; font-weight: 700; letter-spacing: .05em;
+  padding: 14px 34px; border-radius: 8px;
+  transition: background .2s, transform .15s, box-shadow .2s;
+  box-shadow: 0 4px 18px rgba(27,120,68,.3);
+  white-space: nowrap;
+}
+.btn-solid:hover { background: var(--g2); transform: translateY(-2px); box-shadow: 0 8px 26px rgba(27,120,68,.34); }
+.btn-ghost {
+  border: 1.5px solid var(--rule); color: var(--ink2);
+  font-size: 14px; font-weight: 500; letter-spacing: .03em;
+  padding: 13px 26px; border-radius: 8px;
+  transition: border-color .2s, background .2s, color .2s;
+  white-space: nowrap;
+}
+.btn-ghost:hover { border-color: var(--g); background: var(--g-pale); color: var(--g); }
+.btn-sm { font-size: 13px !important; padding: 11px 24px !important; }
+
+.hero-trust {
+  display: flex; align-items: center;
+  padding-top: 28px; border-top: 1px solid var(--rule);
+  flex-wrap: wrap; column-gap: 0; row-gap: 8px;
+}
+.hero-trust-item {
+  font-size: 11px; font-weight: 400; color: var(--ink4); letter-spacing: .04em;
+  padding-right: 16px; margin-right: 16px;
+  border-right: 1px solid var(--rule);
+  white-space: nowrap;
+}
+.hero-trust-item:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+
+.hero-r { overflow: hidden; position: relative; }
+.hero-r img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.hero-r-badge {
+  position: absolute; bottom: 28px; left: 28px;
+  background: rgba(255,255,255,.97);
+  border-radius: 10px;
+  padding: 16px 22px 14px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.15);
+  border: 1px solid rgba(0,0,0,.06);
+}
+.hero-r-badge-n {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 26px; font-weight: 900; letter-spacing: .02em;
+  color: var(--ink); line-height: 1.25; display: block;
+}
+.hero-r-badge-l { font-size: 11px; font-weight: 400; color: var(--ink3); letter-spacing: .03em; margin-top: 5px; display: block; }
+
+
+/* ═══════ CONCEPT ═══════ */
+.concept {
+  padding: 112px 48px;
+  background: #fff;
+  border-bottom: 1px solid var(--rule);
+  overflow-x: hidden;
+}
+.concept-in {
+  max-width: 1080px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 460px; gap: 80px; align-items: center;
+}
+.sect-idx {
+  font-family: 'Syne', sans-serif;
+  font-size: 88px; font-weight: 800;
+  color: rgba(27,120,68,.06);
+  line-height: 1; letter-spacing: -.02em;
+  margin-bottom: -30px; margin-left: -4px;
+  display: block; user-select: none;
+}
+.concept-l h2 {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 900;
+  font-size: clamp(28px, 3.8vw, 48px);
+  line-height: 1.45; color: var(--ink); margin-bottom: 22px;
+}
+.concept-l p {
+  font-size: 15px; font-weight: 400;
+  color: var(--ink3); line-height: 2.1;
+}
+.concept-l p + p { margin-top: 14px; }
+.concept-list {
+  margin-top: 30px;
+  border-top: 1px solid var(--rule); padding-top: 4px;
+}
+.cl-item {
+  display: flex; gap: 14px; align-items: baseline;
+  padding: 13px 8px; border-bottom: 1px solid var(--rule);
+  font-size: 13px; font-weight: 400; color: var(--ink2); line-height: 1.7;
+  transition: background .2s, padding-left .2s;
+  border-radius: 4px;
+}
+.cl-item:hover { background: var(--g-pale); padding-left: 12px; }
+.cl-item:last-child { border-bottom: none; }
+.cl-dash { color: var(--g); font-weight: 700; flex-shrink: 0; }
+.concept-cta { margin-top: 28px; }
+
+.concept-r { position: relative; }
+.concept-photo {
+  width: 100%; height: 520px; border-radius: 18px; overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,.12);
+}
+.concept-photo img { width: 100%; height: 100%; object-fit: cover; }
+/* Stat badge inside the photo */
+.concept-stat {
+  position: absolute; top: 24px; right: 24px;
+  background: var(--amber);
+  border-radius: 12px; padding: 16px 20px;
+  box-shadow: 0 8px 32px rgba(232,156,18,.4);
+}
+.concept-stat-n {
+  font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800;
+  letter-spacing: -.01em; color: #fff; line-height: 1.3; display: block;
+}
+.concept-stat-l {
+  font-size: 10px; color: rgba(255,255,255,.7);
+  margin-top: 3px; display: block; font-weight: 400; letter-spacing: .04em;
+}
+
+/* ═══════ NUMBERS — dark editorial ═══════ */
+.nums { padding: 0 48px; background: #0a3318; overflow-x: hidden; }
+.nums-in {
+  max-width: 1080px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3,1fr);
+}
+.num-c {
+  padding: 64px 40px;
+  border-right: 1px solid rgba(255,255,255,.07);
+  position: relative;
+}
+.num-c:last-child { border-right: none; }
+.num-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-bottom: 10px; display: block;
+}
+.num-n {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(56px, 6vw, 82px);
+  font-weight: 900; color: #fff; line-height: 1; display: block;
+  letter-spacing: -.02em;
+}
+.num-n sup { font-size: 24px; opacity: .6; vertical-align: super; letter-spacing: 0; }
+.num-d { font-size: 13px; font-weight: 400; color: rgba(255,255,255,.65); margin-top: 12px; line-height: 1.9; }
+
+/* ═══════ CURRICULUM ═══════ */
+.curri {
+  padding: 112px 0;
+  background: #fff;
+  border-bottom: 1px solid var(--rule);
+  overflow-x: hidden;
+}
+.curri-head {
+  max-width: 1080px; margin: 0 auto; padding: 0 48px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end;
+  margin-bottom: 64px;
+}
+.curri-tag {
+  font-family: 'Syne', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--g); margin-bottom: 12px; display: block;
+}
+.curri-head h2 {
+  font-family: 'Noto Serif JP', serif; font-weight: 900;
+  font-size: clamp(26px, 3.4vw, 42px); line-height: 1.45; color: var(--ink);
+}
+.curri-head p { font-size: 15px; font-weight: 400; color: var(--ink3); line-height: 2.1; }
+
+.curri-item {
+  max-width: 1080px; margin: 0 auto; padding: 56px 48px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
+  border-top: 1px solid var(--rule);
+}
+.curri-item.rev { direction: rtl; }
+.curri-item.rev > * { direction: ltr; }
+.curri-item-img {
+  border-radius: 16px; overflow: hidden;
+  height: 340px; position: relative;
+}
+.curri-item-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .55s cubic-bezier(.22,.61,.36,1);
+}
+.curri-item:hover .curri-item-img img { transform: scale(1.04); }
+.curri-item-num {
+  position: absolute; top: 20px; left: 20px;
+  font-family: 'Syne', sans-serif;
+  font-size: 40px; font-weight: 800; line-height: 1;
+  color: rgba(255,255,255,.9);
+  text-shadow: 0 2px 18px rgba(0,0,0,.28);
+  letter-spacing: -.01em;
+}
+.curri-item-text { padding: 4px 0; }
+.curri-item-text h3 {
+  font-family: 'Noto Serif JP', serif; font-weight: 900;
+  font-size: clamp(22px, 2.6vw, 30px); line-height: 1.4; color: var(--ink);
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--g-light);
+}
+.curri-item-text p { font-size: 15px; font-weight: 400; color: var(--ink3); line-height: 2.1; }
+.curri-tags { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 6px; }
+.ctag {
+  font-size: 11px; font-weight: 500; color: var(--g);
+  background: var(--g-pale);
+  border: 1px solid var(--g-light);
+  padding: 4px 12px; border-radius: 100px; letter-spacing: .03em;
+  transition: background .2s, color .2s;
+}
+.ctag:hover { background: var(--g); color: #fff; }
+
+/* ═══════ CLASSES ═══════ */
+.classes {
+  padding: 112px 48px;
+  background: var(--warm);
+  border-bottom: 1px solid var(--rule);
+}
+.classes-in { max-width: 1080px; margin: 0 auto; }
+.classes-head {
+  margin-bottom: 52px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end;
+}
+.classes-head h2 {
+  font-family: 'Noto Serif JP', serif; font-weight: 900;
+  font-size: clamp(26px, 3.4vw, 42px); line-height: 1.45; color: var(--ink);
+}
+.classes-head h2 small {
+  display: block;
+  font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 700;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--ink4);
+  margin-bottom: 10px;
+}
+.classes-head p { font-size: 15px; font-weight: 400; color: var(--ink3); line-height: 2.1; }
+
+.class-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: var(--r); overflow: hidden; }
+.class-card {
+  background: #fff;
+  transition: background .25s;
+  padding: 32px 24px 32px;
+  position: relative;
+}
+.class-card:hover { background: var(--g-pale); }
+
+.class-header { display: none; }
+
+.class-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: .12em;
+  color: var(--g); margin-bottom: 20px; display: block;
+}
+.class-age {
+  font-size: 12px; font-weight: 400; letter-spacing: .02em;
+  color: var(--ink3); margin-bottom: 6px;
+}
+.class-name {
+  font-family: 'Noto Serif JP', serif; font-weight: 900;
+  font-size: 22px; color: var(--ink); margin-bottom: 14px; line-height: 1.2;
+  padding-bottom: 14px; border-bottom: 1px solid var(--rule);
+}
+.class-body { padding: 0; }
+.class-body p { font-size: 13px; font-weight: 400; color: var(--ink3); line-height: 1.9; margin-bottom: 14px; }
+.class-topics { display: grid; gap: 5px; }
+.class-topic {
+  font-size: 12px; font-weight: 400; color: var(--ink2); line-height: 1.6;
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.class-topic::before { content: '—'; flex-shrink: 0; color: var(--ink4); }
+
+/* ═══════ GALLERY ═══════ */
+.gallery {
+  padding: 112px 0;
+  background: #fff;
+  border-bottom: 1px solid var(--rule);
+  overflow-x: hidden;
+}
+.gallery-head {
+  max-width: 1080px; margin: 0 auto; padding: 0 48px;
+  margin-bottom: 44px;
+  display: flex; align-items: baseline; gap: 24px;
+}
+.gallery-head h2 {
+  font-family: 'Noto Serif JP', serif; font-weight: 900;
+  font-size: clamp(30px, 4vw, 50px); line-height: 1.2; color: var(--ink);
+}
+.gallery-head-sub {
+  font-size: 13px; font-weight: 300; color: var(--ink4);
+  border-left: 1px solid var(--rule); padding-left: 20px;
+  line-height: 1.7; max-width: 220px;
+}
+.gallery-grid {
+  max-width: 1080px; margin: 0 auto; padding: 0 48px;
+  display: grid;
+  grid-template-columns: 3fr 2fr 2fr;
+  grid-template-rows: 300px 240px;
+  gap: 10px;
+}
+.gi {
+  border-radius: var(--r); overflow: hidden;
+  position: relative; background: var(--g-pale);
+}
+.gi img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .6s cubic-bezier(.22,.61,.36,1);
+}
+.gi:hover img { transform: scale(1.05); }
+.gi-cap {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(8,46,26,.75) 0%, transparent 55%);
+  display: flex; align-items: flex-end;
+  padding: 18px 18px;
+  opacity: 0;
+  transition: opacity .4s;
+}
+.gi:hover .gi-cap { opacity: 1; }
+.gi-cap-text {
+  font-size: 11px; font-weight: 400; color: rgba(255,255,255,.85);
+  letter-spacing: .06em; line-height: 1.5;
+}
+.gi-a { grid-row: span 2; }
+
+/* ═══════ VOICES ═══════ */
+.voices {
+  padding: 112px 48px;
+  background: var(--warm);
+  border-bottom: 1px solid var(--rule);
+}
+.voices-in { max-width: 1080px; margin: 0 auto; }
+.voices-head { margin-bottom: 48px; display: flex; align-items: baseline; gap: 18px; }
+.voices-head-quote {
+  font-family: 'Noto Serif JP', serif; font-weight: 900;
+  font-size: 96px; color: var(--g-light); line-height: 1;
+  flex-shrink: 0; letter-spacing: 0;
+}
+.voices-head h2 {
+  font-family: 'Noto Serif JP', serif; font-weight: 900;
+  font-size: clamp(22px, 3vw, 38px); line-height: 1.45; color: var(--ink);
+}
+
+.voices-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start;
+}
+.vc-feat {
+  background: var(--g);
+  border-radius: 18px; padding: 44px 44px 40px;
+  grid-row: span 2;
+  display: flex; flex-direction: column;
+}
+.vc-label {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 12px; font-weight: 400; letter-spacing: .04em;
+  margin-bottom: 20px; display: block;
+}
+.vc-feat .vc-label { color: rgba(255,255,255,.55); }
+.vc-sm  .vc-label  { color: var(--ink3); margin-bottom: 14px; }
+.vc-feat-q {
+  font-family: Georgia, serif; font-size: 72px;
+  color: rgba(255,255,255,.13); line-height: 1; margin-bottom: 10px; display: block;
+}
+.vc-feat-body {
+  font-size: 17px; font-weight: 400; color: rgba(255,255,255,.92);
+  line-height: 2.05; flex: 1; margin-bottom: 32px;
+}
+.vc-feat-attr { padding-top: 22px; border-top: 1px solid rgba(255,255,255,.13); }
+.vc-feat-name { font-size: 14px; font-weight: 700; color: #fff; display: block; margin-bottom: 3px; }
+.vc-feat-sub  { font-size: 12px; color: rgba(255,255,255,.6); letter-spacing: .02em; }
+
+.vc-sm {
+  background: #fff; border-radius: 18px; padding: 26px 28px 24px;
+  border: 1px solid var(--rule);
+  transition: border-color .25s, box-shadow .25s, transform .25s;
+}
+.vc-sm:hover {
+  border-color: var(--g-light);
+  box-shadow: 0 8px 32px rgba(27,120,68,.08);
+  transform: translateY(-3px);
+}
+.vc-sm-body { font-size: 15px; font-weight: 400; color: var(--ink2); line-height: 2; margin-bottom: 18px; }
+.vc-sm-attr { padding-top: 14px; border-top: 1px solid var(--rule); }
+.vc-sm-name { font-size: 13px; font-weight: 700; color: var(--ink); display: block; margin-bottom: 2px; }
+.vc-sm-sub  { font-size: 12px; color: var(--ink3); }
+
+/* ═══════ FAQ ═══════ */
+.faq {
+  padding: 112px 48px;
+  background: #fff;
+  border-bottom: 1px solid var(--rule);
+}
+.faq-in {
+  max-width: 1080px; margin: 0 auto;
+  display: grid; grid-template-columns: 240px 1fr; gap: 96px; align-items: start;
+}
+.faq-left { position: sticky; top: 76px; }
+.faq-left-idx {
+  font-family: 'Syne', sans-serif; font-size: 64px; font-weight: 800;
+  color: rgba(27,120,68,.07); line-height: 1; letter-spacing: -.02em;
+  margin-bottom: -14px; margin-left: -3px; display: block; user-select: none;
+}
+.faq-left h2 {
+  font-family: 'Noto Serif JP', serif; font-weight: 900;
+  font-size: 26px; line-height: 1.55; color: var(--ink); margin-bottom: 14px;
+}
+.faq-left p { font-size: 13px; font-weight: 300; color: var(--ink3); line-height: 1.95; }
+
+.faq-list { border-top: 1px solid var(--rule); }
+.faq-item { border-bottom: 1px solid var(--rule); transition: background .25s; }
+.faq-item.open { background: var(--g-pale); }
+.faq-q {
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  padding: 22px 16px 22px 0; cursor: pointer; user-select: none;
+}
+.faq-qt {
+  font-size: 15px; font-weight: 500; color: var(--ink); line-height: 1.65;
+  transition: color .25s;
+}
+.faq-item.open .faq-qt { color: var(--g); }
+.faq-ic {
+  width: 28px; height: 28px; flex-shrink: 0;
+  border-radius: 50%; border: 1.5px solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink4); font-size: 18px; font-weight: 300;
+  transition: transform .3s, color .25s, border-color .25s, background .25s;
+}
+.faq-item.open .faq-ic { transform: rotate(45deg); color: #fff; border-color: var(--g); background: var(--g); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .38s ease; }
+.faq-item.open .faq-a { max-height: 320px; }
+.faq-ab { padding: 0 0 22px 0; font-size: 14px; font-weight: 400; color: var(--ink3); line-height: 2.05; }
+
+/* ═══════ CONTACT ═══════ */
+.contact {
+  padding: 112px 48px;
+  background: var(--g-pale);
+  border-bottom: 1px solid var(--g-light);
+}
+.contact-in {
+  max-width: 1080px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 480px; gap: 80px; align-items: start;
+}
+.contact-l-sub {
+  font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 700;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--g); margin-bottom: 14px; display: block;
+}
+.contact-l h2 {
+  font-family: 'Noto Serif JP', serif; font-weight: 900;
+  font-size: clamp(26px, 3.4vw, 42px); line-height: 1.45; color: var(--ink); margin-bottom: 18px;
+}
+.contact-l p { font-size: 15px; font-weight: 400; color: var(--ink3); line-height: 2.1; }
+.contact-l p + p { margin-top: 12px; }
+.contact-meta { margin-top: 36px; display: grid; gap: 18px; }
+.cm { display: flex; align-items: flex-start; gap: 12px; }
+.cm-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--g); flex-shrink: 0; margin-top: 11px; }
+.cm-label { font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink4); margin-bottom: 3px; }
+.cm-val { font-size: 14px; font-weight: 400; color: var(--ink2); }
+
+.form-box {
+  background: #fff; border-radius: 18px;
+  padding: 44px;
+  box-shadow: 0 8px 60px rgba(27,120,68,.1);
+  border: 1px solid var(--g-light);
+}
+.form-box h3 {
+  font-family: 'Noto Serif JP', serif; font-weight: 700;
+  font-size: 20px; color: var(--ink); margin-bottom: 6px;
+}
+.form-sub { font-size: 11px; font-weight: 300; color: var(--ink4); margin-bottom: 26px; letter-spacing: .03em; }
+.fg { margin-bottom: 13px; }
+.fg label {
+  display: block; font-family: 'Syne', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--ink3); margin-bottom: 6px;
+}
+.fg label em { color: #c03020; font-style: normal; }
+.fg input, .fg select, .fg textarea {
+  width: 100%; padding: 12px 14px;
+  border: 1.5px solid var(--rule); border-radius: 8px;
+  font-family: 'Noto Sans JP', sans-serif; font-weight: 300;
+  font-size: 14px; color: var(--ink);
+  background: #fff; appearance: none; resize: vertical;
+  transition: border-color .2s, box-shadow .2s;
+}
+.fg input:focus, .fg select:focus, .fg textarea:focus {
+  outline: none; border-color: var(--g);
+  box-shadow: 0 0 0 3px rgba(27,120,68,.1);
+}
+.fg select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a8b4ab' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center; padding-right: 34px;
+}
+.fg-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.btn-form {
+  width: 100%; padding: 15px; margin-top: 8px;
+  background: var(--g); border: none; border-radius: 8px;
+  font-family: 'Noto Sans JP', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: .06em;
+  color: #fff; cursor: pointer;
+  transition: background .2s, transform .15s, box-shadow .2s;
+  box-shadow: 0 4px 20px rgba(27,120,68,.3);
+}
+.btn-form:hover { background: var(--g2); transform: translateY(-1px); box-shadow: 0 8px 28px rgba(27,120,68,.32); }
+.form-note { font-size: 11px; font-weight: 300; color: var(--ink4); margin-top: 12px; line-height: 1.75; text-align: center; }
+
+/* ═══════ FINAL CTA ═══════ */
+.fcta {
+  padding: 96px 48px;
+  background: radial-gradient(ellipse 80% 100% at 50% 120%, #061e0f 0%, #155e36 55%, #1f8a4a 100%);
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.fcta h2 {
+  font-family: 'Noto Serif JP', serif; font-weight: 900;
+  font-size: clamp(26px, 3.8vw, 46px);
+  color: #fff; line-height: 1.55; margin-bottom: 14px;
+  position: relative;
+}
+.fcta p {
+  font-size: 15px; font-weight: 300;
+  color: rgba(255,255,255,.85); margin-bottom: 40px; position: relative;
+}
+.btn-fw {
+  display: inline-block;
+  background: #fff; color: var(--g);
+  font-size: 15px; font-weight: 700; letter-spacing: .06em;
+  padding: 17px 52px; border-radius: 9px;
+  transition: opacity .2s, transform .2s, box-shadow .2s;
+  box-shadow: 0 8px 40px rgba(0,0,0,.2);
+  position: relative;
+}
+.btn-fw:hover { opacity: .94; transform: translateY(-2px); box-shadow: 0 14px 48px rgba(0,0,0,.25); }
+.fcta-note { font-size: 11px; font-weight: 300; color: rgba(255,255,255,.6); margin-top: 18px; position: relative; }
+
+/* ═══════ FOOTER ═══════ */
+.footer {
+  background: #0a1810; padding: 56px 48px 36px;
+  border-top: 2px solid var(--g);
+  overflow-x: hidden;
+}
+.footer-top {
+  max-width: 1080px; margin: 0 auto;
+  display: grid; grid-template-columns: 200px 1fr; gap: 64px;
+  padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.06); margin-bottom: 24px;
+}
+.footer-brand-name {
+  font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 800;
+  color: rgba(255,255,255,.85); margin-bottom: 10px;
+}
+.footer-brand-text { font-size: 13px; font-weight: 300; color: rgba(255,255,255,.55); line-height: 2; }
+.footer-links { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
+.flg h4 {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: .06em;
+  color: rgba(255,255,255,.5); margin-bottom: 14px;
+}
+.flg a {
+  display: block; font-size: 13px; font-weight: 300;
+  color: rgba(255,255,255,.55); margin-bottom: 9px;
+  transition: color .2s;
+}
+.flg a:hover { color: rgba(255,255,255,.9); }
+.footer-copy {
+  max-width: 1080px; margin: 0 auto;
+  font-size: 11px; font-weight: 300; color: rgba(255,255,255,.4); line-height: 2;
+}
+
+/* ═══════ PAGE TOP ═══════ */
+.ptop {
+  position: fixed; bottom: 28px; right: 28px; z-index: 300;
+  width: 40px; height: 40px; border-radius: 8px;
+  background: var(--g); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s, transform .2s;
+  box-shadow: 0 4px 18px rgba(27,120,68,.32);
+}
+.ptop.on { opacity: 1; pointer-events: auto; }
+.ptop:hover { transform: translateY(-2px); }
+.ptop svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.2; }
+
+/* ═══════════════════════════ RESPONSIVE ═══════════════════════════ */
+@media (max-width: 1020px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; max-height: none; }
+  .hero-l { padding: 64px 40px 56px; border-right: none; border-bottom: 1px solid var(--rule); }
+  .hero-r { height: 420px; }
+  .concept-in { grid-template-columns: 1fr; gap: 56px; }
+  .concept-photo { height: 360px; }
+  .concept-stat { top: 20px; right: 20px; }
+  .curri-item { grid-template-columns: 1fr; gap: 32px; padding: 56px 48px; }
+  .curri-item.rev { direction: ltr; }
+  .curri-item-img { height: 260px; }
+  .class-grid { grid-template-columns: 1fr 1fr; border-radius: 10px; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .gi-a { grid-row: span 1; height: 260px; }
+  .gi-b,.gi-c,.gi-d,.gi-e { height: 210px; }
+  .voices-layout { grid-template-columns: 1fr; }
+  .vc-feat { grid-row: span 1; }
+  .faq-in { grid-template-columns: 1fr; gap: 40px; }
+  .faq-left { position: static; }
+  .contact-in { grid-template-columns: 1fr; gap: 48px; }
+  .nums-in { grid-template-columns: 1fr; }
+  .num-c { border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); }
+  .num-c:last-child { border-bottom: none; }
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  .footer-links { grid-template-columns: 1fr 1fr; }
+  .gallery-head { flex-direction: column; gap: 10px; align-items: flex-start; }
+  .gallery-head-sub { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 10px; max-width: none; }
+  .classes-head,.curri-head { grid-template-columns: 1fr; gap: 18px; }
+}
+
+/* ─── スマートフォン ─── */
+@media (max-width: 680px) {
+  /* ヘッダー */
+  .hd { padding: 0 20px; height: 58px; }
+  [id] { scroll-margin-top: 58px; }
+  .hd-logo { font-size: 13px; }
+  .hd-nav a:not(.hd-cta) { display: none; }
+  .hd-nav a.hd-cta { font-size: 11px; padding: 8px 14px; }
+
+  /* ヒーロー — フルスクリーン・シネマティック */
+  .hero {
+    display: block;
+    margin-top: 0;
+    min-height: 100svh;
+    min-height: 100vh;
+  }
+  .hero-r {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+  }
+  .hero-r img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 25%;
+  }
+  .hero-l {
+    position: relative;
+    z-index: 2;
+    min-height: 100svh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 28px 64px;
+    /* 上部ビネット＋下部シネマティックグラデーション */
+    background:
+      linear-gradient(to bottom, rgba(3,14,7,.45) 0%, transparent 28%),
+      linear-gradient(to top, rgba(3,14,7,.95) 0%, rgba(3,14,7,.65) 38%, rgba(3,14,7,.1) 65%, transparent 100%);
+    border-right: none;
+    border-bottom: none;
+  }
+  /* マーカー：グリーンラインを際立たせる */
+  .hero-marker { margin-bottom: 20px; }
+  .hero-marker-line { background: var(--g); width: 36px; height: 2px; }
+  .hero-marker-text { color: rgba(255,255,255,.5); letter-spacing: .22em; font-size: 9px; }
+  /* 大きく、力強い見出し */
+  .hero-h1 {
+    font-size: clamp(32px, 9vw, 44px);
+    line-height: 1.25;
+    margin-bottom: 18px;
+    color: #fff;
+    letter-spacing: .01em;
+  }
+  .hero-h1 em {
+    color: #fff;
+    text-decoration-color: var(--g);
+    text-underline-offset: 8px;
+    text-decoration-thickness: 3px;
+  }
+  /* サブテキスト */
+  .hero-sub {
+    font-size: 13px;
+    line-height: 2;
+    margin-bottom: 32px;
+    color: rgba(255,255,255,.7);
+    max-width: none;
+  }
+  /* ボタン：1本に絞る */
+  .hero-btns { flex-direction: column; gap: 10px; margin-bottom: 0; }
+  .btn-solid {
+    text-align: center;
+    padding: 16px 20px;
+    font-size: 14px;
+    letter-spacing: .06em;
+    background: var(--g);
+    box-shadow: 0 4px 24px rgba(27,120,68,.5);
+  }
+  .btn-ghost { display: none; }
+  /* trustは非表示、代わりにスクロールインジケータ */
+  .hero-trust { display: none; }
+
+  .hero-r-badge { display: none; }
+  /* スクロールライン */
+  .hero-scroll-ind {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, rgba(255,255,255,.55), transparent);
+    animation: scrollDrop 2.2s ease-in-out infinite;
+  }
+  @keyframes scrollDrop {
+    0%   { opacity: 0; transform: translateX(-50%) scaleY(0); transform-origin: top; }
+    40%  { opacity: 1; transform: translateX(-50%) scaleY(1); transform-origin: top; }
+    100% { opacity: 0; transform: translateX(-50%) scaleY(1) translateY(20px); transform-origin: top; }
+  }
+
+  /* セクション余白 */
+  .concept,.classes,.voices,.faq,.contact,.fcta { padding: 60px 20px; }
+  .curri   { padding: 60px 0; }
+  .nums    { padding: 0; }
+  .gallery { padding: 60px 0; }
+
+  /* コンセプト */
+  .concept-in { gap: 36px; }
+  .concept-photo { height: 240px; }
+  .sect-idx { font-size: 48px; margin-bottom: -18px; }
+  .concept-l h2 { font-size: clamp(22px, 7vw, 32px); }
+  .cl-item { font-size: 13px; padding: 11px 8px; }
+
+  /* 数字 — 3列・説明文は非表示 */
+  .nums-in { grid-template-columns: repeat(3,1fr) !important; }
+  .num-c {
+    padding: 28px 10px;
+    border-right: 1px solid rgba(255,255,255,.08) !important;
+    border-bottom: none !important;
+  }
+  .num-c:last-child { border-right: none !important; }
+  .num-label { font-size: 8px; letter-spacing: .08em; margin-bottom: 6px; }
+  .num-n { font-size: 28px; }
+  .num-n sup { font-size: 11px; }
+  .num-d { display: none; }
+
+  /* カリキュラム */
+  .curri-head { padding: 0 20px; }
+  .curri-head h2 { font-size: clamp(20px, 6.5vw, 30px); }
+  .curri-head p { font-size: 14px; }
+  .curri-item { padding: 32px 20px; gap: 18px; }
+  .curri-item-img { height: 200px; }
+  .curri-item-num { font-size: 26px; }
+  .curri-item-text h3 { font-size: 19px; }
+  .curri-item-text p { font-size: 14px; }
+  .ctag { font-size: 10px; padding: 3px 10px; }
+
+  /* クラス案内 */
+  .class-grid {
+    grid-template-columns: 1fr;
+    background: transparent;
+    border: none; border-radius: 0;
+    gap: 10px;
+  }
+  .class-card { border: 1px solid var(--rule); border-radius: 10px; padding: 22px 18px; }
+  .class-num { margin-bottom: 10px; }
+  .class-name { font-size: 20px; margin-bottom: 10px; padding-bottom: 10px; }
+  .class-body p { font-size: 13px; }
+  .class-topic { font-size: 11px; }
+
+  /* ギャラリー */
+  .gallery-head { padding: 0 20px; }
+  .gallery-head h2 { font-size: clamp(22px, 7vw, 34px); }
+  .gallery-grid { padding: 0 20px; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .gi { border-radius: 8px; }
+  .gi-a,.gi-b,.gi-c,.gi-d,.gi-e { height: 160px; grid-row: span 1; }
+
+  /* 保護者の声 */
+  .voices-head { flex-direction: column; gap: 0; margin-bottom: 32px; }
+  .voices-head-quote { font-size: 44px; line-height: 1; margin-bottom: -4px; }
+  .voices-head h2 { font-size: clamp(18px, 6vw, 26px); }
+  .vc-feat { padding: 26px 20px; }
+  .vc-feat-body { font-size: 15px; }
+  .vc-sm { padding: 20px 18px; }
+  .vc-sm-body { font-size: 14px; }
+
+  /* FAQ */
+  .faq-in { gap: 28px; }
+  .faq-left-idx { font-size: 40px; }
+  .faq-left h2 { font-size: 20px; }
+  .faq-left p { font-size: 12px; }
+  .faq-qt { font-size: 14px; }
+  .faq-ab { font-size: 13px; }
+
+  /* お申し込み */
+  .contact-in { gap: 32px; }
+  .contact-l h2 { font-size: clamp(20px, 6.5vw, 30px); }
+  .form-box { padding: 26px 18px; border-radius: 12px; }
+  .form-box h3 { font-size: 17px; }
+  .fg-2 { grid-template-columns: 1fr; }
+  .fg input,.fg select,.fg textarea { font-size: 16px; }
+  .btn-form { padding: 14px; font-size: 14px; }
+
+  /* フッター */
+  .footer { padding: 40px 20px 24px; }
+  .footer-top { gap: 28px; }
+  .footer-links { grid-template-columns: 1fr 1fr; gap: 24px 12px; }
+  .flg h4 { font-size: 10px; margin-bottom: 10px; }
+  .flg a { font-size: 12px; margin-bottom: 7px; }
+  .footer-brand-text { font-size: 12px; }
+  .footer-copy { font-size: 10px; }
+
+  /* 最終CTA */
+  .fcta h2 { font-size: clamp(20px, 6.5vw, 30px); }
+  .fcta p { font-size: 14px; margin-bottom: 28px; }
+  .btn-fw { padding: 15px 24px; font-size: 14px; width: 100%; text-align: center; display: block; }
+  .fcta-note { font-size: 10px; }
+
+
+}
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hd" id="hd">
+  <div class="hd-logo">AI Prep School</div>
+  <nav class="hd-nav">
+    <a href="#concept">スクールについて</a>
+    <a href="#curri">カリキュラム</a>
+    <a href="#classes">クラス案内</a>
+    <a href="#contact" class="hd-cta">体験会に申し込む</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-l">
+    <div class="hero-marker rz">
+      <div class="hero-marker-line"></div>
+      <span class="hero-marker-text">Opening 2026 · AI Prep School</span>
+    </div>
+    <h1 class="hero-h1 rz d1">
+      好奇心が、<br><em>AI</em>と出会う場所。
+    </h1>
+    <p class="hero-sub rz d2">考え、つくり、伝える力を育てる。子どもたちの「なぜ？」を大切にする、新しい学びのプレップスクールです。</p>
+    <div class="hero-btns rz d3">
+      <a href="#contact" class="btn-solid">開校前体験会を申し込む</a>
+      <a href="#concept" class="btn-ghost">スクールについて</a>
+    </div>
+    <div class="hero-trust rz d4">
+      <span class="hero-trust-item">体験会は完全無料</span>
+      <span class="hero-trust-item">定員8名の少人数制</span>
+      <span class="hero-trust-item">保護者見学歓迎</span>
+    </div>
+    <div class="hero-scroll-ind"></div>
+  </div>
+  <div class="hero-r">
+    <img
+      src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200&q=90&auto=format&fit=crop&crop=center"
+      alt="授業風景"
+      fetchpriority="high"
+    >
+    <div class="hero-r-badge">
+      <span class="hero-r-badge-n">2026.9</span>
+      <span class="hero-r-badge-l">開校予定 · 先行体験受付中</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONCEPT -->
+<section class="concept" id="concept">
+  <div class="concept-in">
+    <div class="concept-l rz">
+      <span class="sect-idx">01</span>
+      <h2>「答えを出す力」より<br>「問いを立てる力」を。</h2>
+      <p>2030年、学習指導要領が改訂されます。AI活用能力は、国語・算数と並ぶ「学習の基盤」として位置づけられます。</p>
+      <p>大切にしているのは、最新の技術を覚えることではありません。「なぜ？」「どうすれば？」と考え続ける力——それを持つ子どもが、どんな時代でも自分らしく生きていけると信じています。</p>
+      <div class="concept-list">
+        <div class="cl-item"><span class="cl-dash">—</span>プロジェクト型学習でつくる・発表する</div>
+        <div class="cl-item"><span class="cl-dash">—</span>少人数制で一人ひとりのペースに寄り添う</div>
+        <div class="cl-item"><span class="cl-dash">—</span>AIを「一緒に考えるパートナー」として使う習慣</div>
+        <div class="cl-item"><span class="cl-dash">—</span>2030年の教育改革を先取りしたカリキュラム</div>
+      </div>
+      <div class="concept-cta">
+        <a href="#contact" class="btn-solid btn-sm">開校前体験会に申し込む →</a>
+      </div>
+    </div>
+    <div class="rz d1">
+      <div class="concept-r">
+        <div class="concept-photo">
+          <img
+            src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=900&q=85&auto=format&fit=crop&crop=center"
+            alt="集中して学ぶ子ども"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<div class="nums">
+  <div class="nums-in">
+    <div class="num-c rz">
+      <span class="num-label">Opening</span>
+      <span class="num-n">2026<sup>.9</sup></span>
+      <p class="num-d">2026年9月、いよいよ開校。先行体験授業の申し込みを受け付けています</p>
+    </div>
+    <div class="num-c rz d1">
+      <span class="num-label">Class Size</span>
+      <span class="num-n">8<sup>名</sup></span>
+      <p class="num-d">クラス定員は8名。少人数だからこそ、一人ひとりのペースに向き合えます</p>
+    </div>
+    <div class="num-c rz d2">
+      <span class="num-label">Age Range</span>
+      <span class="num-n">4<sup>〜15歳</sup></span>
+      <p class="num-d">4歳（年少）から中学3年生まで、成長段階に合わせた4つのクラスを設けています</p>
+    </div>
+  </div>
+</div>
+
+<!-- CURRICULUM -->
+<section class="curri" id="curri">
+  <div class="curri-head rz">
+    <div>
+      <span class="curri-tag">Curriculum</span>
+      <h2>3つの力で育てる、<br>AI時代の学び。</h2>
+    </div>
+    <p>知識を詰め込むのではなく、考え・つくり・伝える力を体験的に身につけます。年齢に合わせて段階的に深めていきます。</p>
+  </div>
+
+  <div class="curri-item rz">
+    <div class="curri-item-img">
+      <img src="https://images.unsplash.com/photo-1484807352052-23338990c6c6?w=700&q=85&auto=format&fit=crop" alt="バイブコーディング" loading="lazy">
+    </div>
+    <div class="curri-item-text">
+      <h3>バイブコーディング</h3>
+      <p>コードを書かなくても、AIに言葉で指示するだけでアプリや作品が生まれる——その体験から始めます。「つくれる」という自信が、子どもの探究心を加速させます。</p>
+      <div class="curri-tags">
+        <span class="ctag">AIへの指示出し</span><span class="ctag">ノーコード制作</span><span class="ctag">プロトタイピング</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="curri-item rev rz d1">
+    <div class="curri-item-img">
+      <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=700&q=85&auto=format&fit=crop" alt="AI活用・生成AI" loading="lazy">
+    </div>
+    <div class="curri-item-text">
+      <h3>AI活用・生成AI</h3>
+      <p>ChatGPT・画像生成・動画AIなど、最前線のツールを実際に使いこなします。「AIをどう使うか」を自分で考え、目的に合わせて選ぶ力を養います。</p>
+      <div class="curri-tags">
+        <span class="ctag">生成AI実践</span><span class="ctag">プロンプト設計</span><span class="ctag">マルチモーダルAI</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="curri-item rz d2">
+    <div class="curri-item-img">
+      <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=700&q=85&auto=format&fit=crop" alt="AIリテラシー" loading="lazy">
+    </div>
+    <div class="curri-item-text">
+      <h3>AIリテラシー</h3>
+      <p>AIが得意なことと苦手なこと、情報の真偽の見極め方、倫理的な使い方——テクノロジーと賢く付き合うための「問いを立てる力」を育てます。</p>
+      <div class="curri-tags">
+        <span class="ctag">情報リテラシー</span><span class="ctag">AIの倫理</span><span class="ctag">批判的思考</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLASS SYSTEM -->
+<section class="classes" id="classes">
+  <div class="classes-in">
+    <div class="classes-head rz">
+      <div>
+        <h2>
+          <small>Class System</small>
+          4歳から中学生まで、<br>成長に合わせた4クラス。
+        </h2>
+      </div>
+      <p>はじめてのお子さんから、より深く学びたいお子さんまで。体験会でお子さんの様子を見てから、最適なクラスをご提案します。</p>
+    </div>
+    <div class="class-grid">
+
+      <div class="class-card kids rz">
+        <div class="class-header"></div>
+        <span class="class-num">01</span>
+        <div class="class-body">
+          <div class="class-age">4 — 6歳</div>
+          <div class="class-name">キッズ</div>
+          <p>声や言葉でAIに話しかけ、一緒につくる体験をする入門クラス。「AIって何？」を遊びながら自然に理解していきます。</p>
+          <div class="class-topics">
+            <span class="class-topic">AIとの対話・音声操作</span>
+            <span class="class-topic">画像生成で絵本づくり</span>
+            <span class="class-topic">AIおもちゃ体験</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="class-card jun rz d1">
+        <div class="class-header"></div>
+        <span class="class-num">02</span>
+        <div class="class-body">
+          <div class="class-age">小学1 — 3年生</div>
+          <div class="class-name">ジュニア</div>
+          <p>AIに指示を出してゲームや動画を作る「バイブコーディング」入門。プロンプトの書き方や、AIとの対話の基礎を身につけます。</p>
+          <div class="class-topics">
+            <span class="class-topic">バイブコーディング入門</span>
+            <span class="class-topic">プロンプトの書き方基礎</span>
+            <span class="class-topic">AIで動画・画像を制作</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="class-card std rz d2">
+        <div class="class-header"></div>
+        <span class="class-num">03</span>
+        <div class="class-body">
+          <div class="class-age">小学4 — 6年生</div>
+          <div class="class-name">スタンダード</div>
+          <p>AIを使って実際にアプリや作品を作る実践クラス。バイブコーディングで「つくれる」体験を重ね、AIリテラシーも深めます。</p>
+          <div class="class-topics">
+            <span class="class-topic">バイブコーディングで制作</span>
+            <span class="class-topic">生成AIリテラシー</span>
+            <span class="class-topic">AIの使い方・倫理</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="class-card adv rz d3">
+        <div class="class-header"></div>
+        <span class="class-num">04</span>
+        <div class="class-body">
+          <div class="class-age">中学1 — 3年生</div>
+          <div class="class-name">アドバンス</div>
+          <p>高度なプロンプトエンジニアリングとAIツール活用で、社会課題の解決策を自分で設計・発表。AI時代の思考力を本格的に鍛えます。</p>
+          <div class="class-topics">
+            <span class="class-topic">プロンプトエンジニアリング</span>
+            <span class="class-topic">AIによる課題解決・発表</span>
+            <span class="class-topic">AIリテラシー・情報倫理</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="gallery-head rz">
+    <h2>授業の様子</h2>
+    <p class="gallery-head-sub">少人数で、一人ひとりに向き合う授業の風景です。</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gi gi-a rz">
+      <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=900&q=85&auto=format&fit=crop" alt="授業風景" loading="lazy">
+      <div class="gi-cap"><span class="gi-cap-text">少人数で向き合う授業</span></div>
+    </div>
+    <div class="gi gi-b rz d1">
+      <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=85&auto=format&fit=crop&crop=bottom" alt="グループ学習" loading="lazy">
+      <div class="gi-cap"><span class="gi-cap-text">グループでのプロジェクト</span></div>
+    </div>
+    <div class="gi gi-c rz d2">
+      <img src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=600&q=85&auto=format&fit=crop" alt="プログラミング" loading="lazy">
+      <div class="gi-cap"><span class="gi-cap-text">プログラミング授業</span></div>
+    </div>
+    <div class="gi gi-d rz d1">
+      <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=85&auto=format&fit=crop" alt="発表の様子" loading="lazy">
+      <div class="gi-cap"><span class="gi-cap-text">成果発表の時間</span></div>
+    </div>
+    <div class="gi gi-e rz d2">
+      <img src="https://images.unsplash.com/photo-1560785496-3c9d404f15ac?w=600&q=85&auto=format&fit=crop" alt="制作活動" loading="lazy">
+      <div class="gi-cap"><span class="gi-cap-text">自由な制作活動</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICES -->
+<section class="voices">
+  <div class="voices-in">
+    <div class="voices-head rz">
+      <div class="voices-head-quote">&ldquo;</div>
+      <h2>開校前体験会に<br>参加された保護者の声</h2>
+    </div>
+    <div class="voices-layout">
+      <div class="vc-feat rz">
+        <div class="vc-label">開校前体験会 参加者より</div>
+        <span class="vc-feat-q">&ldquo;</span>
+        <p class="vc-feat-body">「難しそう」と渋っていた娘が、体験会の帰り道に「もっとやりたい！」と言いました。自分でキャラクターを動かせた瞬間の顔が忘れられません。授業の雰囲気が温かく、一人ひとりに声をかけてくれる様子に、親として安心しました。</p>
+        <div class="vc-feat-attr">
+          <span class="vc-feat-name">山田さん（保護者）</span>
+          <span class="vc-feat-sub">小学2年生のお子さんと参加 · 東京都</span>
+        </div>
+      </div>
+      <div class="vc-sm rz d1">
+        <div class="vc-label">開校前体験会 参加者より</div>
+        <p class="vc-sm-body">「AIって怖いもの」という先入観が、体験会で一気に変わりました。こんな形で学べるなら、むしろ早く触れさせてあげたかったと思いました。開校を心待ちにしています。</p>
+        <div class="vc-sm-attr">
+          <span class="vc-sm-name">田中さん（保護者）</span>
+          <span class="vc-sm-sub">小学4年生のお子さんと参加 · 神奈川県</span>
+        </div>
+      </div>
+      <div class="vc-sm rz d2">
+        <div class="vc-label">開校前体験会 参加者より</div>
+        <p class="vc-sm-body">カリキュラムの説明を聞いて、ただのプログラミング教室とは違うと感じました。「考える姿勢」を育てるというコンセプトが、まさに私が求めていたものでした。</p>
+        <div class="vc-sm-attr">
+          <span class="vc-sm-name">佐藤さん（保護者）</span>
+          <span class="vc-sm-sub">小学6年生のお子さんと参加 · 大阪府</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="faq-in">
+    <div class="faq-left rz">
+      <span class="faq-left-idx">FAQ</span>
+      <h2>よくある<br>ご質問</h2>
+      <p>他にご不明な点があれば、お問い合わせフォームよりお気軽にご連絡ください。</p>
+    </div>
+    <div class="faq-list rz d1">
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-qt">パソコンやタブレットは持参が必要ですか？</span><span class="faq-ic">+</span></div>
+        <div class="faq-a"><div class="faq-ab">授業で使用する端末はスクールで貸し出します。ご家庭での復習用に端末をお持ちであれば活用できますが、必須ではありません。詳しくは体験授業の際にご説明します。</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-qt">プログラミング未経験の子でも大丈夫ですか？</span><span class="faq-ic">+</span></div>
+        <div class="faq-a"><div class="faq-ab">まったくはじめてのお子さんが大多数です。キッズ・ジュニアクラスはゼロスタートを前提とした内容で、楽しみながら自然にスキルが身につく設計になっています。</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-qt">授業の頻度・時間はどのくらいですか？</span><span class="faq-ic">+</span></div>
+        <div class="faq-a"><div class="faq-ab">週1回（60分）または週2回（60分）のコースをご用意しています。平日夕方・土日の複数時間帯から選べます。他の習い事とも調整しやすい設計です。</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-qt">費用はどのくらいかかりますか？</span><span class="faq-ic">+</span></div>
+        <div class="faq-a"><div class="faq-ab">入会金：10,000円、月謝：週1回コース 12,000円〜 / 週2回コース 20,000円〜（クラスにより異なります）。詳細は体験授業後の個別説明でご案内します。体験授業は無料です。</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-qt">教室はどのエリアにありますか？</span><span class="faq-ic">+</span></div>
+        <div class="faq-a"><div class="faq-ab">東京都内（渋谷・新宿・自由が丘）・大阪（梅田・天王寺）に教室を開設予定です。一部クラスはオンラインでも受講いただけます。</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-qt">体験会はいつ開催されますか？</span><span class="faq-ic">+</span></div>
+        <div class="faq-a"><div class="faq-ab">2026年5〜6月に開催予定です。下記フォームよりお申し込みください。通常授業と同じ内容・雰囲気でお子さんに体験していただけます。費用は一切かかりません。</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-in">
+    <div class="rz">
+      <div class="contact-l">
+        <span class="contact-l-sub">Pre-opening Trial</span>
+        <h2>開校前に、<br>ぜひ体験してください。</h2>
+        <p>2026年5〜6月に「開校前体験会」を開催します。実際の授業と同じ内容・雰囲気でお子さんに体験していただけます。保護者の方の見学も歓迎しています。</p>
+        <p>体験後に、ご入会のご意向をお聞かせいただければ、開校時に優先的にご案内します。</p>
+        <div class="contact-meta">
+          <div class="cm"><div class="cm-dot"></div><div><div class="cm-label">開校予定</div><div class="cm-val">2026年9月（体験会は2026年5〜6月）</div></div></div>
+          <div class="cm"><div class="cm-dot"></div><div><div class="cm-label">教室（予定）</div><div class="cm-val">東京（渋谷・新宿・自由が丘）大阪（梅田・天王寺）</div></div></div>
+          <div class="cm"><div class="cm-dot"></div><div><div class="cm-label">対象年齢</div><div class="cm-val">4歳〜中学3年生</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-box rz d1">
+      <h3>開校前体験会に申し込む</h3>
+      <p class="form-sub">2営業日以内にご連絡いたします · 費用は一切かかりません</p>
+      <form action="#" onsubmit="return false;">
+        <div class="fg-2">
+          <div class="fg"><label>保護者のお名前 <em>*</em></label><input type="text" placeholder="山田 花子"></div>
+          <div class="fg"><label>お子さまのお名前 <em>*</em></label><input type="text" placeholder="山田 太郎"></div>
+        </div>
+        <div class="fg-2">
+          <div class="fg">
+            <label>お子さまの年齢・学年 <em>*</em></label>
+            <select>
+              <option value="">選択してください</option>
+              <option>4歳（年少）</option><option>5歳（年中）</option><option>6歳（年長）</option>
+              <option>小学1年生</option><option>小学2年生</option><option>小学3年生</option>
+              <option>小学4年生</option><option>小学5年生</option><option>小学6年生</option>
+              <option>中学1年生</option><option>中学2年生</option><option>中学3年生</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>希望校舎 <em>*</em></label>
+            <select>
+              <option value="">選択してください</option>
+              <option>東京・渋谷校</option><option>東京・新宿校</option><option>東京・自由が丘校</option>
+              <option>大阪・梅田校</option><option>大阪・天王寺校</option><option>オンライン</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg-2">
+          <div class="fg"><label>電話番号 <em>*</em></label><input type="tel" placeholder="090-0000-0000"></div>
+          <div class="fg"><label>メールアドレス <em>*</em></label><input type="email" placeholder="example@mail.com"></div>
+        </div>
+        <div class="fg"><label>ご要望（任意）</label><textarea rows="3" placeholder="例：土曜午前を希望。はじめてですが大丈夫でしょうか。"></textarea></div>
+        <button class="btn-form" type="submit">開校前体験会を申し込む →</button>
+        <p class="form-note">※個人情報は本件以外の目的には使用しません。入会の強制は一切ありません。</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="fcta">
+  <h2 class="rz">2026年9月、開校します。</h2>
+  <p class="rz d1">開校前体験会で、まずその空気を感じてみてください。</p>
+  <a href="#contact" class="btn-fw rz d2">開校前体験会に申し込む</a>
+  <p class="fcta-note rz d3">費用は一切かかりません · 保護者の見学も歓迎します</p>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">AI Prep School</div>
+      <p class="footer-brand-text">考え、つくり、伝える。<br>子どもたちの好奇心と向き合うスクールです。</p>
+    </div>
+    <div class="footer-links">
+      <div class="flg">
+        <h4>スクール</h4>
+        <a href="#concept">スクールについて</a>
+        <a href="#curri">カリキュラム</a>
+        <a href="#classes">クラス案内</a>
+        <a href="#faq">よくある質問</a>
+      </div>
+      <div class="flg">
+        <h4>お申し込み</h4>
+        <a href="#contact">体験会に申し込む</a>
+        <a href="#contact">お問い合わせ</a>
+      </div>
+      <div class="flg">
+        <h4>法的事項</h4>
+        <a href="#">プライバシーポリシー</a>
+        <a href="#">特定商取引法に基づく表記</a>
+        <a href="#">運営会社</a>
+      </div>
+    </div>
+  </div>
+  <p class="footer-copy">
+    ※2030年の学習指導要領改訂は文部科学省の公式資料（2026年2月公表「次期学習指導要領に向けた論点整理」）に基づきます。<br>
+    &copy; 2026 AI Prep School. All Rights Reserved.
+  </p>
+</footer>
+
+<div class="ptop" id="ptop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 14 14"><polyline points="2,10 7,4 12,10"/></svg>
+</div>
+
+<script>
+const hd = document.getElementById('hd');
+const pt = document.getElementById('ptop');
+window.addEventListener('scroll', () => {
+  hd.classList.toggle('s', scrollY > 30);
+  pt.classList.toggle('on', scrollY > 500);
+}, { passive: true });
+
+const io = new IntersectionObserver(e => {
+  e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.rz').forEach(el => io.observe(el));
+
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const it = q.closest('.faq-item'), op = it.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!op) it.classList.add('open');
+  });
+});
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+
+<!--
+  PHOTO CREDITS (Unsplash — free for commercial use)
+  Hero:      Nikhita S.      unsplash.com/photos/NsPDiPFTp4c
+  Concept:   Annie Spratt    unsplash.com/photos/MChSQHxGZrQ
+  Curri-01:  stem.T4L        unsplash.com/photos/bJjsKbToY34
+  Curri-02:  Lukas Blazek    unsplash.com/photos/mcSDtbWXUZU
+  Curri-03:  NCI             unsplash.com/photos/701-FJcjLAQ
+  Gallery-1〜5: NCI / Nikhita S. / Clément H. / Sam Balye / Mika Baumeister
+-->
+</body>
+</html>
